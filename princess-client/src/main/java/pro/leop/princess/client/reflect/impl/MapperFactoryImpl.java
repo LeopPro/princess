@@ -12,6 +12,10 @@ import pro.leop.princess.common.exception.RpcMapperException;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 
 public class MapperFactoryImpl implements IMapperFactory {
     private IRemoteInvoker remoteInvoker;
@@ -54,8 +58,21 @@ public class MapperFactoryImpl implements IMapperFactory {
             Request request = new Request();
             request.setName(facadePath + rpcCall.value());
             request.setParameters(args);
+            if (rpcCall.async()) {
+                FutureTask<Object> futureTask = new FutureTask<Object>(() -> remoteInvoker.invoke(request)){
+                    @Override
+                    public Object get() throws InterruptedException, ExecutionException {
+                        Response response = (Response) super.get();
+                        if (!response.isSuccess()) {
+                            throw new RpcCallException(response.getExceptionMessage());
+                        }
+                        return response.getResult();
+                    }
+                };
+                new Thread(futureTask).start();
+                return futureTask;
+            }
             Response response = remoteInvoker.invoke(request);
-            System.out.println(response);
             if (!response.isSuccess()) {
                 throw new RpcCallException(response.getExceptionMessage());
             }

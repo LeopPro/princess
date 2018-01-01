@@ -7,4 +7,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RpcCall {
     String value() default "";
+
+    boolean async() default false;
 }
