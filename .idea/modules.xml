@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/princess.iml" filepath="$PROJECT_DIR$/princess.iml" />
       <module fileurl="file://$PROJECT_DIR$/princess-client/princess-client.iml" filepath="$PROJECT_DIR$/princess-client/princess-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/princess-common/princess-common.iml" filepath="$PROJECT_DIR$/princess-common/princess-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/princess-server/princess-server.iml" filepath="$PROJECT_DIR$/princess-server/princess-server.iml" />
     </modules>
   </component>

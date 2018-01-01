@@ -9,18 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>princess-server</artifactId>
-
+    <artifactId>princess-common</artifactId>
     <dependencies>
         <dependency>
-            <groupId>pro.leop</groupId>
-            <artifactId>princess-common</artifactId>
-            <version>0.1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>RELEASE</version>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.41</version>
         </dependency>
     </dependencies>
+
+
 </project>

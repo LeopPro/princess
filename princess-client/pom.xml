@@ -11,5 +11,12 @@
 
     <artifactId>princess-client</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>pro.leop</groupId>
+            <artifactId>princess-common</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+    </dependencies>
 
 </project>
